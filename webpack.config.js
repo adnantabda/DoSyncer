@@ -3,11 +3,14 @@ const  htmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = {
 
-    entry: './src/script/index.js', 
+    entry: './src/script/main.js', 
     output: {
         filename: 'main.js', 
         path : path.resolve(__dirname , 'dist')
     }, 
+    optimization: {
+        concatenateModules: false
+      },
     plugins: [
         new htmlWebpackPlugin( {
             template : './src/index.html'
@@ -22,7 +25,14 @@ module.exports = {
             {
                 test: /\.(jpg|png|svg)$/,
                 type : 'asset/resource'
-            }
+            },
+
+                {
+                    test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                    type: 'asset/resource',
+    
+                },
+
         ]
     },
 }
