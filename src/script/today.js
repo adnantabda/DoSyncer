@@ -9,6 +9,7 @@ import todayIcon from '../imgs/today_home_icon.svg'
 import deleteIcon from '../imgs/delete_icon.svg'
 const appFace = document.querySelector(".app-face")
 import { menuShow } from './menu'
+import { deleteProject } from './todayLog'
 
 
 
@@ -39,7 +40,6 @@ export const navCreate = ()=>{
     }
 
 )
-    
     navLeft.appendChild(menuImage)
     navLeft.appendChild(todayText)
     navBar.appendChild(navLeft)
@@ -90,6 +90,10 @@ export const todayDate = ()=>{
 export const listOfActions = ()=>{
     const actions = document.createElement("div")
     const projects = document.createElement("div")
+    const projectsDivTitle = document.createElement("h2")
+    projectsDivTitle.textContent = "Projects"
+    projectsDivTitle.style.marginLeft = "30px"
+    projects.appendChild(projectsDivTitle)
     const habits = document.createElement("div")
     const tasks = document.createElement("div")
     const listOfProjects = document.createElement("ul")
@@ -105,12 +109,16 @@ export const listOfActions = ()=>{
     actions.appendChild(habits)
     actions.appendChild(tasks)
 
-    for(let i = 0 ; i < allProjectName().length ; i++){
+    let len = JSON.parse(localStorage.getItem("projects")).length
+
+    for(let i = 0 ; i < len ; i++){
         const divInLi = document.createElement("div")
         const li = document.createElement("li")
         const textContainer = document.createElement("div")
         const spanTextProject = document.createElement("span")
         const deleteAndTitle = document.createElement("div")
+
+        
 
 
         const deleteImage = new Image()
@@ -120,10 +128,12 @@ export const listOfActions = ()=>{
         deleteAndTitle.appendChild(deleteImage)
         deleteAndTitle.classList.add("delete-and-title-container")
 
-
+        
         const projectTitle = document.createElement("p")
 
-        projectTitle.textContent = allProjectName()[i]
+        let name = allProjectName()[i].projectName
+
+        projectTitle.textContent = name
 
         li.appendChild(divInLi)
         divInLi.classList.add("project-name-container")
@@ -137,6 +147,27 @@ export const listOfActions = ()=>{
         
 
         listOfProjects.appendChild(li)
+
+        
+        
+        deleteImage.addEventListener("click" , ()=>{
+            while(li.firstChild){
+
+                li.removeChild(li.firstChild)
+            }
+
+
+            const current = JSON.parse(localStorage.getItem("projects"))
+            const remainingProjects = []
+            for (let j = 0 ; j < current.length; j++){
+                if(current[j].projectName !== name){
+                    remainingProjects.push(current[j])
+                }
+            }
+            localStorage.setItem("projects" , JSON.stringify(remainingProjects))
+
+        })
+
     }
 
 
