@@ -15,14 +15,7 @@ const appFace = document.querySelector(".app-face")
 
 
 navCreate()
-console.log("working")
 todayDate()
-console.log("working 2")
-console.log(allTodoInProject(0))
-
-console.log(allTodoInProject.length)
-console.log(allNameTodoInProject(allTodoInProject))
 listOfActions()
-console.log(allHabitsName())
 footer()
 
