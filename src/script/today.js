@@ -7,6 +7,7 @@ import habitIcon from '../imgs/habit_icon.svg'
 import taskIcon from '../imgs/task_icon.svg'
 import todayIcon from '../imgs/today_home_icon.svg'
 import deleteIcon from '../imgs/delete_icon.svg'
+
 const appFace = document.querySelector(".app-face")
 import { menuShow } from './menu'
 import { deleteProject } from './todayLog'
@@ -101,6 +102,23 @@ export const listOfActions = ()=>{
     const listOfTasks = document.createElement("ul")
 
 
+    const habitsDivTitle = document.createElement("h2")
+    habitsDivTitle.classList.add("h2habits")
+    habitsDivTitle.textContent = "Habits"
+    habitsDivTitle.style.marginLeft = "30px"
+    habits.appendChild(habitsDivTitle)
+
+
+    const tasksDivTitle = document.createElement("h2")
+    tasksDivTitle.textContent = "Tasks"
+    tasksDivTitle.style.marginLeft = "30px"
+    tasks.appendChild(tasksDivTitle)
+    tasksDivTitle.classList.add("h2tasks")
+    projectsDivTitle.classList.add("h2projects")
+
+
+
+
     actions.classList.add("actions")
     projects.classList.add("projects")
     habits.classList.add("habits")
@@ -109,9 +127,10 @@ export const listOfActions = ()=>{
     actions.appendChild(habits)
     actions.appendChild(tasks)
 
-    let len = JSON.parse(localStorage.getItem("projects")).length
+    let lenProjects = JSON.parse(localStorage.getItem("projects")).length
+    let lenHabits = JSON.parse(localStorage.getItem("habits")).length
 
-    for(let i = 0 ; i < len ; i++){
+    for(let i = 0 ; i < lenProjects ; i++){
         const divInLi = document.createElement("div")
         const li = document.createElement("li")
         const textContainer = document.createElement("div")
@@ -123,7 +142,7 @@ export const listOfActions = ()=>{
 
         const deleteImage = new Image()
         deleteImage.src = deleteIcon
-        spanTextProject.textContent = "Project"
+        spanTextProject.textContent = `Project  ${i + 1}`
         deleteAndTitle.appendChild(spanTextProject)
         deleteAndTitle.appendChild(deleteImage)
         deleteAndTitle.classList.add("delete-and-title-container")
@@ -174,18 +193,20 @@ export const listOfActions = ()=>{
     projects.appendChild(listOfProjects)
 
     appFace.appendChild(actions)
-    // console.log(allHabitsName())
 
 
-    for(let i =0 ; i <allHabitsName().length ; i++)
+    for(let i =0 ; i <lenHabits ; i++)
     {
+
+        let nameHabit = allHabitsName()[i].habitName
+
         const divInLiHabit = document.createElement("div")
         const textContainerHabit = document.createElement("div")
         const LiHabit = document.createElement("li")
         const spanTextHabit = document.createElement("span")
-        spanTextHabit.textContent = "Habit"
+        spanTextHabit.textContent = `Habit  ${i + 1}`
         const habitTitle = document.createElement("p")
-        habitTitle.textContent = allHabitsName()[i]
+        habitTitle.textContent = nameHabit
 
         const deleteAndTitleHabit = document.createElement("div")
         const deleteImage = new Image()
@@ -205,6 +226,44 @@ export const listOfActions = ()=>{
         divInLiHabit.appendChild(textContainerHabit)
 
         listOfHabits.appendChild(LiHabit)
+
+
+
+
+        deleteImage.addEventListener("click" , ()=>{
+            // console.log("clicked THis yahhoo")
+            while(LiHabit.firstChild){
+
+                LiHabit.removeChild(LiHabit.firstChild)
+            }
+
+
+            const currentHabits = JSON.parse(localStorage.getItem("habits"))
+            // console.log(currentHabits[i].habitName)
+            // console.log(`${allHabitsName()[i]} Function Array` )
+
+            const remainingHabits = []
+            for (let j = 0 ; j < currentHabits.length; j++){
+                if(currentHabits[j].habitName !== nameHabit){
+                    console.log(currentHabits[j].habitName)
+                    console.log(allHabitsName()[i])
+
+                    remainingHabits.push(currentHabits[j])
+                }
+            }
+
+
+            // const current = JSON.parse(localStorage.getItem("projects"))
+            // const remainingProjects = []
+            // for (let j = 0 ; j < current.length; j++){
+            //     if(current[j].projectName !== name){
+            //         remainingProjects.push(current[j])
+            //     }
+            // }
+            // localStorage.setItem("projects" , JSON.stringify(remainingProjects))
+            localStorage.setItem("habits" , JSON.stringify(currentHabits))
+
+        })
     }
     habits.appendChild(listOfHabits)
 
@@ -219,14 +278,16 @@ export const listOfActions = ()=>{
 
 
         const deleteAndTitleTask = document.createElement("div")
-        const deleteImage = new Image()
-        deleteImage.src = deleteIcon
+        const deleteImageTask = new Image()
+        deleteImageTask.src = deleteIcon
         deleteAndTitleTask.classList.add("delete-and-title-container")
         deleteAndTitleTask.appendChild(spanTextTask)
-        deleteAndTitleTask.appendChild(deleteImage)
+        deleteAndTitleTask.appendChild(deleteImageTask)
 
 
-        spanTextTask.textContent = "Task"
+        spanTextTask.textContent = `Task  ${i + 1}`
+
+
         
 
 
@@ -249,6 +310,25 @@ export const listOfActions = ()=>{
         divInLiTask.appendChild(textContainerTask)
 
         listOfTasks.appendChild(LiTask)
+
+        deleteImageTask.addEventListener("click" , ()=>{
+            console.log("clicked THis yahhoo")
+            while(LiTask.firstChild){
+
+                LiTask.removeChild(LiTask.firstChild)
+            }
+
+
+            // const current = JSON.parse(localStorage.getItem("projects"))
+            // const remainingProjects = []
+            // for (let j = 0 ; j < current.length; j++){
+            //     if(current[j].projectName !== name){
+            //         remainingProjects.push(current[j])
+            //     }
+            // }
+            // localStorage.setItem("projects" , JSON.stringify(remainingProjects))
+
+        })
 
     }
     tasks.appendChild(listOfTasks)
