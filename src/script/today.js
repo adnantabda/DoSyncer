@@ -1,16 +1,19 @@
 import menuIcon from '../imgs/menu_icon.svg'
 import calender from '../imgs/calender_icon.svg'
 import clock from '../imgs/time_icon.svg'
-import { allHabitsName, allProjectName, allTasksName} from './todayLog'
+import { allHabitsName, allNameTodoInProject, allProjectName, allTasksName, allTodoInProject} from './todayLog'
 import projectIcon from '../imgs/project_icon.svg'
 import habitIcon from '../imgs/habit_icon.svg'
 import taskIcon from '../imgs/task_icon.svg'
 import todayIcon from '../imgs/today_home_icon.svg'
 import deleteIcon from '../imgs/delete_icon.svg'
+import todoIcon from '../imgs/todo_icon.svg'
 
 const appFace = document.querySelector(".app-face")
 import { menuShow } from './menu'
 import { deleteProject } from './todayLog'
+
+
 
 
 
@@ -129,6 +132,7 @@ export const listOfActions = ()=>{
 
     let lenProjects = JSON.parse(localStorage.getItem("projects")).length
     let lenHabits = JSON.parse(localStorage.getItem("habits")).length
+    let lenTasks = JSON.parse(localStorage.getItem("tasks")).length
 
     for(let i = 0 ; i < lenProjects ; i++){
         const divInLi = document.createElement("div")
@@ -136,9 +140,6 @@ export const listOfActions = ()=>{
         const textContainer = document.createElement("div")
         const spanTextProject = document.createElement("span")
         const deleteAndTitle = document.createElement("div")
-
-        
-
 
         const deleteImage = new Image()
         deleteImage.src = deleteIcon
@@ -186,7 +187,66 @@ export const listOfActions = ()=>{
             localStorage.setItem("projects" , JSON.stringify(remainingProjects))
 
         })
+        const todoContainer = document.createElement("div")
 
+        projectTitle.addEventListener("click" , ()=>{
+                const ulLI = document.createElement("ul")
+                for (let j = 0 ; j < allTodoInProject(name).length ; j ++){
+
+                
+                    const todoImage = new Image()
+                    const liDiv = document.createElement("div")
+                    liDiv.classList.add("li-div-todo")
+                    const timeTodo = document.createElement("span")
+                    const DateTodo = document.createElement("span")
+                    DateTodo.classList.add("span-text-date")
+                    timeTodo.classList.add("span-text-time")
+                    const spanLiTodo = document.createElement("p")
+
+
+                    const divTodoText = document.createElement("div")
+
+                
+
+                    divTodoText.appendChild(spanLiTodo)
+                    divTodoText.appendChild(timeTodo)
+                    divTodoText.appendChild(DateTodo)
+
+
+
+
+
+
+                    timeTodo.textContent = allTodoInProject(name)[j].time
+                    DateTodo.textContent = allTodoInProject(name)[j].date
+
+
+                    console.log(allTodoInProject(name))
+                    todoImage.src = todoIcon
+                    const liTodo = document.createElement("li")
+                    spanLiTodo.textContent = allTodoInProject(name)[j].name
+
+                    liDiv.appendChild(todoImage)
+                    liDiv.appendChild(divTodoText)
+                    // liDiv.appendChild(timeTodo)
+                    // liDiv.appendChild(DateTodo)
+        
+                    liTodo.appendChild(liDiv)
+                        ulLI.appendChild(liTodo)
+                }
+                todoContainer.appendChild(ulLI)
+                todoContainer.classList.add("todo-container")
+    
+    
+                
+        
+
+
+
+            
+        })
+        li.appendChild(todoContainer)
+        
     }
 
 
@@ -228,8 +288,6 @@ export const listOfActions = ()=>{
         listOfHabits.appendChild(LiHabit)
 
 
-
-
         deleteImage.addEventListener("click" , ()=>{
             // console.log("clicked THis yahhoo")
             while(LiHabit.firstChild){
@@ -245,30 +303,22 @@ export const listOfActions = ()=>{
             const remainingHabits = []
             for (let j = 0 ; j < currentHabits.length; j++){
                 if(currentHabits[j].habitName !== nameHabit){
-                    console.log(currentHabits[j].habitName)
-                    console.log(allHabitsName()[i])
-
                     remainingHabits.push(currentHabits[j])
                 }
             }
 
-
-            // const current = JSON.parse(localStorage.getItem("projects"))
-            // const remainingProjects = []
-            // for (let j = 0 ; j < current.length; j++){
-            //     if(current[j].projectName !== name){
-            //         remainingProjects.push(current[j])
-            //     }
-            // }
-            // localStorage.setItem("projects" , JSON.stringify(remainingProjects))
-            localStorage.setItem("habits" , JSON.stringify(currentHabits))
+            localStorage.setItem("habits" , JSON.stringify(remainingHabits))
 
         })
     }
     habits.appendChild(listOfHabits)
 
-    for(let i =0 ; i <allTasksName().length ; i++)
+
+
+    for(let i =0 ; i < lenTasks ; i++)
     {
+
+        let nameTask = allTasksName()[i].name
 
         // console.log("we are inside " + i)
         const divInLiTask = document.createElement("div")
@@ -293,7 +343,7 @@ export const listOfActions = ()=>{
 
 
         const taskTitle = document.createElement("p")
-        taskTitle.textContent = allTasksName()[i]
+        taskTitle.textContent = nameTask
 
 
 
@@ -317,6 +367,19 @@ export const listOfActions = ()=>{
 
                 LiTask.removeChild(LiTask.firstChild)
             }
+
+            const currentTasks = JSON.parse(localStorage.getItem("tasks"))
+            // console.log(currentHabits[i].habitName)
+            // console.log(`${allHabitsName()[i]} Function Array` )
+
+            const remainingTasks = []
+            for (let j = 0 ; j < currentTasks.length; j++){
+                if(currentTasks[j].name !== nameTask){
+                    remainingTasks.push(currentTasks[j])
+                }
+            }
+
+            localStorage.setItem("tasks" , JSON.stringify(remainingTasks))
 
 
             // const current = JSON.parse(localStorage.getItem("projects"))
@@ -393,5 +456,15 @@ export const footer = ()=>{
 
     footerContainer.appendChild(iconContainer)
     appFace.appendChild(footerContainer)
+
+}
+
+
+export const todayPage = ()=>{
+
+    navCreate()
+    todayDate()
+    listOfActions()
+    footer()
 
 }
