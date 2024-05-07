@@ -7,15 +7,16 @@ import { listOfActions } from "./today.js";
 import { allHabitsName } from "./todayLog.js";
 import { footer } from "./today.js";
 import {menuShow } from "./menu.js"
+import { todayPage } from "./today.js";
+import { createDomForAddProject } from "./AddProject.js";
 
+
+
+const popUp = document.querySelector(".pop-up-div")
 
 
 const appFace = document.querySelector(".app-face")
 
-
-
-navCreate()
-todayDate()
-listOfActions()
-footer()
+todayPage()
+popUp.appendChild(createDomForAddProject())
 
