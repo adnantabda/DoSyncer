@@ -4,8 +4,8 @@ import { habitsJSon } from "./data"
 
 
 // const projects = JSON.parse(projectsJSon())
-const tasks = JSON.parse(tasksJSon())
-const habits = JSON.parse(habitsJSon())
+// const tasks = JSON.parse(tasksJSon())
+// const habits = JSON.parse(habitsJSon())
 
 
 
@@ -18,6 +18,7 @@ let projectsData = [
         {  
             name : "First Todo Of Project one",
             date : "23-14-2024",
+            time: "12:6 PM",
             done : false,
             description : "this the project that I will work on in the distance future if i allah wills", 
             priority : 2,
@@ -25,6 +26,8 @@ let projectsData = [
         {
             name : "Second Todo of Project one",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if i allah wills", 
             priority : 2,
@@ -33,6 +36,8 @@ let projectsData = [
         {
             name : "Third Todo of Project one",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if  allah wills", 
             priority : 2,
@@ -48,6 +53,8 @@ let projectsData = [
         {   
             name : "First Todo Of Project Two",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if i allah wills", 
             priority : 2,
@@ -55,6 +62,8 @@ let projectsData = [
         {
             name : "Second Todo of Project two",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if i allah wills", 
             priority : 2,
@@ -62,6 +71,8 @@ let projectsData = [
         {
             name : "Third Todo of Project two",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if  allah wills", 
             priority : 2,
@@ -76,23 +87,29 @@ let projectsData = [
         todo : 
         [
         {   
-            name : "First Todo Of Project one",
+            name : "First Todo Of Project 3",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if i allah wills", 
             priority : 2,
         },
         {
-            name : "Second Todo of Project one",
+            name : "Second Todo of Project 3",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if i allah wills", 
             priority : 2,
         },
 
         {
-            name : "Third Todo of Project one",
+            name : "Third Todo of Project 3",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if  allah wills", 
             priority : 2,
@@ -107,22 +124,28 @@ let projectsData = [
         todo : 
         [
         {   
-            name : "First Todo Of Project Two",
+            name : "First Todo Of Project 4",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if i allah wills", 
             priority : 2,
         },
         {
-            name : "Second Todo of Project two",
+            name : "Second Todo of Project 4",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if i allah wills", 
             priority : 2,
         }, 
         {
-            name : "Third Todo of Project two",
+            name : "Third Todo of Project 4",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if  allah wills", 
             priority : 2,
@@ -139,6 +162,8 @@ let projectsData = [
         {   
             name : "First Todo Of Project one",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if i allah wills", 
             priority : 2,
@@ -146,6 +171,8 @@ let projectsData = [
         {
             name : "Second Todo of Project one",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if i allah wills", 
             priority : 2,
@@ -154,6 +181,8 @@ let projectsData = [
         {
             name : "Third Todo of Project one",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if  allah wills", 
             priority : 2,
@@ -169,6 +198,8 @@ let projectsData = [
         {   
             name : "First Todo Of Project Two",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if i allah wills", 
             priority : 2,
@@ -176,6 +207,8 @@ let projectsData = [
         {
             name : "Second Todo of Project two",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if i allah wills", 
             priority : 2,
@@ -183,6 +216,8 @@ let projectsData = [
         {
             name : "Third Todo of Project two",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if  allah wills", 
             priority : 2,
@@ -199,6 +234,8 @@ let projectsData = [
         {   
             name : "First Todo Of Project one",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if i allah wills", 
             priority : 2,
@@ -206,6 +243,8 @@ let projectsData = [
         {
             name : "Second Todo of Project one",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if i allah wills", 
             priority : 2,
@@ -214,6 +253,8 @@ let projectsData = [
         {
             name : "Third Todo of Project one",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if  allah wills", 
             priority : 2,
@@ -230,6 +271,8 @@ let projectsData = [
         {   
             name : "First Todo Of Project Two",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if i allah wills", 
             priority : 2,
@@ -237,6 +280,8 @@ let projectsData = [
         {
             name : "Second Todo of Project two",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if i allah wills", 
             priority : 2,
@@ -244,6 +289,8 @@ let projectsData = [
         {
             name : "Third Todo of Project two",
             date : "23-14-2024",
+            time: "12:6 PM",
+
             done : false,
             description : "this the project that I will work on in the distance future if  allah wills", 
             priority : 2,
@@ -255,10 +302,58 @@ let projectsData = [
 ]
 
 
+let habits = [
+    {
+        habitName : "1st habit exercise",
+        day : ['Monday' , 'Tuesday' , 'Friday'],
+        description : "This Habit serves as testimonial to my strength" , 
+
+    } ,
+    {
+        habitName : "2nd habit Don't drink alcohol",
+        day : ['Monday' , 'Tuesday' , 'Friday' , 'Thursday' , 'Saturday' , 'Sunday'],
+        description : "This Habit serves as testimonial to my strength" , 
+
+    },    
+    {
+        habitName : "3st habit exercise",
+        day : ['Monday' , 'Tuesday' , 'Friday'],
+        description : "This Habit serves as testimonial to my strength" , 
+
+    } ,
+    
+]
+
+
+let tasks = [
+    {
+        name : '1st task Taking care of baby', 
+        range : [4 , "hr"], 
+        description : "taking care of a baby for 4 hours after his mother went to super market", 
+        done : false
+    },
+    {
+        name : '2st task Taking care of baby', 
+        range : [4 , "hr"], 
+        description : "taking care of a baby for 4 hours after his mother went to super market", 
+        done : false
+    }, 
+    {
+        name : '1st task Taking care of baby', 
+        range : [4 , "hr"], 
+        description : "taking care of a baby for 4 hours after his mother went to super market", 
+        done : false
+    },
+    
+
+]
 
 
 
 localStorage.setItem("projects" , JSON.stringify(projectsData))
+localStorage.setItem("habits" , JSON.stringify(habits))
+
+localStorage.setItem("tasks" , JSON.stringify(tasks))
 
 
 export const allProjectName = ()=>{
@@ -269,8 +364,14 @@ export const allProjectName = ()=>{
 
 }
 
-export const allTodoInProject = (projectNumber)=>{
-    return projects[projectNumber].todo
+export const allTodoInProject = (projectName)=>{
+    const projects = JSON.parse(localStorage.getItem("projects"))
+    for (let i = 0 ; i < projects.length ; i++){
+        if (projectName == projects[i].projectName)
+            {
+            return projects[i].todo
+        }
+    }
 }
 
 
@@ -286,20 +387,18 @@ export const allNameTodoInProject = (allTodoInProject)=>{
 }
 
 export const allHabitsName = ()=>{
-    let habitList = []
-    for (let i =0;i< habits.length; i++){
-        habitList.push(habits[i].name)
-    }
-    return habitList
+    let HabitList = JSON.parse(localStorage.getItem("habits"))
+    // let habitList = []
+    // for (let i =0; i < HabitList.length; i++){
+    //     habitList.push(HabitList[i].habitName)
+    // }
+    return HabitList
 
 }
 
 
 export const allTasksName = ()=>{
-    let taskList = []
-    for (let i =0;i< tasks.length; i++){
-        taskList.push(tasks[i].name)
-    }
+    let taskList = JSON.parse(localStorage.getItem("tasks"))
     return taskList
 }
 
