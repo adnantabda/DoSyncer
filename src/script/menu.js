@@ -28,7 +28,8 @@ const todayName = ()=>{
 }
 
 
-export const menuShow = ()=>{
+export const menuShow = ()=>
+    {
     const menu = document.createElement("div")
     const addList = document.createElement("div")
     const addTodayContainer = document.createElement("div")
@@ -140,13 +141,28 @@ export const menuShow = ()=>{
     menu.appendChild(dayContainer)
     menu.appendChild(addList)
 
+    projectSpan.addEventListener("click" , ()=>{
+        const appFace = document.querySelector(".app-face");
+        const menu = document.querySelector(".menu-bar"); // Get the existing menu
+        if (menu) {
+            appFace.removeChild(menu); // Remove the existing menu
+        }
 
-    todaySpan.addEventListener("click" , ()=>{
-        // console.log("this is working")
-        const appFace = document.querySelector("body")        
+        appFace.style.display = "none"
+
+        const div = document.querySelector(".pop-up-div")
+        div.style.display = "flex"
     })
 
 
+    todaySpan.addEventListener("click", () => {
+        const appFace = document.querySelector(".app-face");
+        const menu = document.querySelector(".menu-bar"); // Get the existing menu
+        if (menu) {
+            appFace.removeChild(menu); // Remove the existing menu
+        }
+    });
+    
     return menu
 
 
