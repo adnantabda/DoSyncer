@@ -5,7 +5,7 @@ import projectIcon from '../imgs/add_project_icon.svg'
 import todoIcon from '../imgs/add_todo_icon.svg'
 import taskIcon from '../imgs/task_icon.svg'
 import habitIcon from '../imgs/habit_icon.svg'
-// import { tasks } from './data'
+import { todayPage } from './today'
 
 
 
@@ -19,7 +19,7 @@ const todayName = ()=>{
         4: "Thursday",
         5: "Friday",
         6: "Saturday",
-        7: "Sunday",
+        0: "Sunday",
    }
 
 
@@ -50,6 +50,14 @@ export const menuShow = ()=>{
     const developerNameContainer = document.createElement("div")
     const githubImage = new Image()
     githubImage.src = githubIcon
+
+
+    githubImage.classList.add("github-icon")
+
+    githubImage.addEventListener("click" , ()=>{
+        window.open("https://github.com/adnantabda", "_blank")
+    })
+
     const developerName = document.createElement("span")
     developerName.textContent = "Developed by Adnan Tahir"
     developerNameContainer.appendChild(developerName)
@@ -131,6 +139,12 @@ export const menuShow = ()=>{
     menu.appendChild(DoSyncerHeaderImage)
     menu.appendChild(dayContainer)
     menu.appendChild(addList)
+
+
+    todaySpan.addEventListener("click" , ()=>{
+        // console.log("this is working")
+        const appFace = document.querySelector("body")        
+    })
 
 
     return menu
