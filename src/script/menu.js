@@ -149,7 +149,6 @@ export const menuShow = ()=>
         }
 
         appFace.style.display = "none"
-
         const div = document.querySelector(".pop-up-div")
         div.style.display = "flex"
     })
