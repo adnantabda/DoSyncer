@@ -10,12 +10,15 @@ import deleteIcon from '../imgs/delete_icon.svg'
 import todoIcon from '../imgs/todo_icon.svg'
 
 const appFace = document.querySelector(".app-face")
+const body = document.querySelector("body")
 import { menuShow } from './menu'
 import { deleteProject } from './todayLog'
 
 
 
-
+appFace.appendChild(menuShow())
+const menuFirst = document.querySelector(".menu-bar")
+menuFirst.style.display = "none"
 
 export const navCreate = ()=>{
 
@@ -28,19 +31,22 @@ export const navCreate = ()=>{
 
     const menuImage = new Image()
     const CalenderIcon = new Image()
+    menuImage.classList.add("menu-image-svg")
 
     menuImage.src = menuIcon
     todayText.textContent = "TODAY"
     CalenderIcon.src = calender
 
-    let menuOpen = false
 
-    menuImage.addEventListener("mouseenter", ()=>{
-        menuImage.style.cursor = "pointer"
-        menuImage.addEventListener("click" , ()=>{
+    menuImage.addEventListener("click", ()=>{
+        const menu = document.querySelector(".menu-bar")
+        if(appFace.contains(menu)){
+
+            menu.style.display = "flex"
+        }else{
             appFace.appendChild(menuShow())
-            menuOpen = true
-        })
+        }
+
     }
 
 )
@@ -119,9 +125,6 @@ export const listOfActions = ()=>{
     tasksDivTitle.classList.add("h2tasks")
     projectsDivTitle.classList.add("h2projects")
 
-
-
-
     actions.classList.add("actions")
     projects.classList.add("projects")
     habits.classList.add("habits")
@@ -168,8 +171,6 @@ export const listOfActions = ()=>{
 
         listOfProjects.appendChild(li)
 
-        
-        
         deleteImage.addEventListener("click" , ()=>{
             while(li.firstChild){
 
@@ -189,7 +190,12 @@ export const listOfActions = ()=>{
         })
         const todoContainer = document.createElement("div")
 
+        let open = false
         projectTitle.addEventListener("click" , ()=>{
+            if(!open){
+
+            
+
                 const ulLI = document.createElement("ul")
                 for (let j = 0 ; j < allTodoInProject(name).length ; j ++){
 
@@ -221,24 +227,30 @@ export const listOfActions = ()=>{
                     DateTodo.textContent = allTodoInProject(name)[j].date
 
 
-                    console.log(allTodoInProject(name))
                     todoImage.src = todoIcon
                     const liTodo = document.createElement("li")
                     spanLiTodo.textContent = allTodoInProject(name)[j].name
 
                     liDiv.appendChild(todoImage)
                     liDiv.appendChild(divTodoText)
-                    // liDiv.appendChild(timeTodo)
-                    // liDiv.appendChild(DateTodo)
         
                     liTodo.appendChild(liDiv)
                         ulLI.appendChild(liTodo)
+                        console.log("This is working")
+
                 }
                 todoContainer.appendChild(ulLI)
                 todoContainer.classList.add("todo-container")
     
-    
-                
+                open = true
+
+            }else{
+                while(todoContainer.firstChild){
+                    todoContainer.removeChild(todoContainer.firstChild)
+                }
+                open = false
+
+            }
         
 
 
