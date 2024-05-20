@@ -6,8 +6,10 @@ import todoIcon from '../imgs/add_todo_icon.svg'
 import taskIcon from '../imgs/task_icon.svg'
 import habitIcon from '../imgs/habit_icon.svg'
 import { todayPage } from './today'
-
-
+import { addTodo } from './addTodo'
+import { addTaskDom } from './addTask'
+import { addHabitDom } from './addHabit'
+import { addProjectDom } from './AddProject2'
 
 const todayName = ()=>{
     const currentDay = new Date()
@@ -142,28 +144,65 @@ export const menuShow = ()=>
     menu.appendChild(addList)
 
     projectSpan.addEventListener("click" , ()=>{
-        const appFace = document.querySelector(".app-face");
-        const menu = document.querySelector(".menu-bar"); // Get the existing menu
-        if (menu) {
-            appFace.removeChild(menu); // Remove the existing menu
-        }
+        // const appFace = document.querySelector(".app-face");
+        // const menu = document.querySelector(".menu-bar"); // Get the existing menu
+        // const TextAreas = document.querySelectorAll("textarea")
+        // const Button = document.querySelectorAll("button")
 
-        appFace.style.display = "none"
-        const div = document.querySelector(".pop-up-div")
-        div.style.display = "flex"
+
+        // TextAreas.forEach((e)=>{
+        //     e.style.alignSelf = "center"
+        // })
+
+        // Button.forEach((e)=>{
+        //     e.style.alignSelf = "center"            
+        // })
+        
+        // if (menu) {
+        //     appFace.removeChild(menu); // Remove the existing menu
+        // }
+        // appFace.style.display = "none"
+        // const div = document.querySelector(".pop-up-div")
+        // div.style.display = "flex"
+        addProjectDom()
+        
+        
     })
 
 
     todaySpan.addEventListener("click", () => {
-        const appFace = document.querySelector(".app-face");
-        const menu = document.querySelector(".menu-bar"); // Get the existing menu
-        if (menu) {
-            appFace.removeChild(menu); // Remove the existing menu
-        }
+        const menu = document.querySelector(".menu-bar"); 
+        menu.style.display = "none"
     });
-    
-    return menu
 
+    todoSpan.addEventListener("click" , ()=>{
+        const appFace = document.querySelector(".app-face");
+        const menu = document.querySelector(".menu-bar"); // Get
+        menu.style.display = "none"
+
+        appFace.style.display = "none"
+        const div = document.querySelector(".pop-up-div")
+        div.style.display = "flex"
+        addTodo()
+    })
+    
+
+    taskSpan.addEventListener("click" , ()=>{
+        const appFace = document.querySelector(".app-face");
+        const menu = document.querySelector(".menu-bar"); // Get
+        menu.style.display = "none"
+        addTaskDom()
+    })
+
+    habitSpan.addEventListener("click" , ()=>{
+        const appFace = document.querySelector(".app-face");
+        const menu = document.querySelector(".menu-bar"); // Get
+        menu.style.display = "none"
+        addHabitDom()
+
+
+    })
+    return menu
 
 }
 

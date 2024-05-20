@@ -2,11 +2,13 @@ const path = require("path")
 const  htmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = {
-
+    mode: "production",
     entry: './src/script/main.js', 
     output: {
         filename: 'main.js', 
-        path : path.resolve(__dirname , 'dist')
+        path : path.resolve(__dirname , 'dist'),
+        assetModuleFilename: '[name][ext]',
+        clean: true,
     }, 
     optimization: {
         concatenateModules: false
@@ -30,7 +32,7 @@ module.exports = {
                 {
                     test: /\.(woff|woff2|eot|ttf|otf)$/i,
                     type: 'asset/resource',
-    
+                    
                 },
 
         ]

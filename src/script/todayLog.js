@@ -305,21 +305,17 @@ let projectsData = [
 let habits = [
     {
         habitName : "1st habit exercise",
-        day : ['Monday' , 'Tuesday' , 'Friday'],
         description : "This Habit serves as testimonial to my strength" , 
 
     } ,
     {
         habitName : "2nd habit Don't drink alcohol",
-        day : ['Monday' , 'Tuesday' , 'Friday' , 'Thursday' , 'Saturday' , 'Sunday'],
         description : "This Habit serves as testimonial to my strength" , 
 
     },    
     {
         habitName : "3st habit exercise",
-        day : ['Monday' , 'Tuesday' , 'Friday'],
-        description : "This Habit serves as testimonial to my strength" , 
-
+        description : "This Habit serves as testimonial to my strength" ,
     } ,
     
 ]
@@ -328,19 +324,16 @@ let habits = [
 let tasks = [
     {
         name : '1st task Taking care of baby', 
-        range : [4 , "hr"], 
         description : "taking care of a baby for 4 hours after his mother went to super market", 
         done : false
     },
     {
         name : '2st task Taking care of baby', 
-        range : [4 , "hr"], 
         description : "taking care of a baby for 4 hours after his mother went to super market", 
         done : false
     }, 
     {
         name : '1st task Taking care of baby', 
-        range : [4 , "hr"], 
         description : "taking care of a baby for 4 hours after his mother went to super market", 
         done : false
     },
@@ -358,10 +351,7 @@ localStorage.setItem("tasks" , JSON.stringify(tasks))
 
 export const allProjectName = ()=>{
     let projectsList = JSON.parse(localStorage.getItem("projects"))
-
-    // console.log(projectsList[0].projectName)
     return projectsList
-
 }
 
 export const allTodoInProject = (projectName)=>{

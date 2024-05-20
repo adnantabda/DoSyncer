@@ -22,19 +22,14 @@ const addTodoForValue = (projectName , projectDescription) =>{
     const date = document.querySelector(".todo-date")
     const priority = document.querySelector(".todo-priority")
     const timeValue = document.querySelector(".todo-time")
+    todoName.classList.add("todo-name-field")
+    descriptionTodo.classList.add("todo-description-field")
+    date.classList.add("todo-date-field")
+    priority.classList.add("todo-priority-field")
+    timeValue.classList.add("todo-time-field")
 
 
-    if (todoName.value === "" && descriptionTodo.value === "" &&  date.value  === "" && priority.value === ""){
-
-        todoName.style.border = "1px solid red";
-
-        descriptionTodo.style.border = "1px solid red";
-
-        date.style.border = "1px solid red";
-
-        priority.style.border = "1px solid red";
-
-    } else if ( todoName.value === ""){
+     if ( todoName.value === ""){
 
         todoName.style.border = "1px solid red";
 
@@ -71,8 +66,6 @@ const addTodoForValue = (projectName , projectDescription) =>{
     }
 
 
-
-
 const addTodoDom = (projectName , projectDescription)=>{
     const todoDiv = document.createElement("div")
     const todoName = document.createElement("input")
@@ -87,13 +80,13 @@ const addTodoDom = (projectName , projectDescription)=>{
     const priority = document.createElement("input")
     priority.classList.add("todo-priority")
     const saveTodo = document.createElement("button")
-    const addAnotherTodo = document.createElement("button")
+    // const addAnotherTodo = document.createElement("button")
     date.setAttribute("type" , "date")
 
 
     saveTodo.classList.add("save-todo-btn")
     saveTodo.textContent = "SAVE"
-    addAnotherTodo.textContent = "Add Another"
+    // addAnotherTodo.L = "Add Another"
 
 
     todoDiv.classList.add("add-todo-div")
@@ -137,38 +130,53 @@ const addTodoDom = (projectName , projectDescription)=>{
     todoDiv.appendChild(todoPriorityLabel)
     todoDiv.appendChild(priority)
     todoDiv.appendChild(saveTodo)
-    todoDiv.appendChild(addAnotherTodo)
+    // todoDiv.appendChild(addAnotherTodo)
 
     saveTodo.addEventListener("click" , ()=>{
         const newProject = addTodoForValue(projectName , projectDescription)
-        const appFace = document.querySelector(".app-face")
         const currentProjects = JSON.parse(localStorage.getItem("projects"))
         currentProjects.push(newProject)
-        localStorage.setItem("projects" , JSON.stringify(currentProjects))
+
+        const appFace = document.querySelector(".app-face")
         const pop = document.querySelector(".pop-up-div")
 
-        while (appFace.firstChild){
-            appFace.removeChild(appFace.firstChild)
+        let todoName = document.querySelector(".todo-name-field")
+        let date = document.querySelector(".todo-date-field")
+        let priority = document.querySelector(".todo-priority-field")
 
+        if ( todoName.value == ""){
+            console.log("This Thing")
+            todoName.style.border = "1px solid red";
+
+        }else if( date.value === ""){
+    
+            date.style.border = "1px solid red";
+    
+        }else if (priority.value === ""){
+            priority.style.border = "1px solid red";
         }
-        while(pop.firstChild){
-            pop.removeChild(pop.firstChild)
-        }
-        pop.appendChild(createDomForAddProject())
-        todoName.value = ""
-        time.value = "12:00"
-        date.value = ""
-        priority.value = ""
-        description.value = ""
-        pop.style.display = "none"
-        // createDomForAddProject()
 
-        appFace.style.display = "block"
-        todayPage()
+        else{      
+        localStorage.setItem("projects" , JSON.stringify(currentProjects))
 
-        // console.log(addTodoForValue(projectName, projectDescription))
+
+            while (appFace.firstChild){
+                appFace.removeChild(appFace.firstChild)
+            }
+            while(pop.firstChild){
+                pop.removeChild(pop.firstChild)
+            }
+            pop.appendChild(createDomForAddProject())
+            todoName.value = ""
+            date.value = ""
+            priority.value = ""
+            description.value = ""
+            pop.style.display = "none"
+            console.log(newProject)
+            appFace.style.display = "block"
+            todayPage()
+            }
     })
-
     return todoDiv
 
 
@@ -318,3 +326,39 @@ export const createDomForAddProject = ()=>{
 
 }
 
+
+const ddee = ()=>{
+    const appFace = document.querySelector(".app-face")
+    const pop = document.querySelector(".pop-up-div")
+
+    let todoName = document.querySelector(".todo-name-field")
+    let descriptionTodo = document.querySelector(".todo-description-field")
+    let date = document.querySelector(".todo-date-field")
+    let priority = document.querySelector(".todo-priority-field")
+    let timeValue = document.querySelector(".todo-time-field")
+
+   
+        
+        const newProject = addTodoForValue(projectName , projectDescription)
+        const currentProjects = JSON.parse(localStorage.getItem("projects"))
+        currentProjects.push(newProject)
+        localStorage.setItem("projects" , JSON.stringify(currentProjects))
+    
+
+        
+        while (appFace.firstChild){
+            appFace.removeChild(appFace.firstChild)
+        }
+        while(pop.firstChild){
+            pop.removeChild(pop.firstChild)
+        }
+        pop.appendChild(createDomForAddProject())
+        todoName.value = ""
+        date.value = ""
+        priority.value = ""
+        description.value = ""
+        pop.style.display = "none"
+        console.log(newProject)
+        appFace.style.display = "block"
+        todayPage()
+}

@@ -1,3 +1,4 @@
+import "../style/today.scss"
 import  {navCreate}  from "./today.js";
 import {todayDate} from "./today.js";
 import {allTodoInProject, displayProjects }from './todayLog.js'
@@ -9,6 +10,7 @@ import { footer } from "./today.js";
 import {menuShow } from "./menu.js"
 import { todayPage } from "./today.js";
 import { createDomForAddProject } from "./AddProject.js";
+import { addTaskDom } from "./addTask.js";
 
 
 
